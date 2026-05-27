@@ -1,0 +1,83 @@
+#識別子	名前	型補足引数
+a.B	BrokenObject	
+a.b	BoxedPrimitive	
+a.c	Constant	
+a.p	Primitive	
+a.r	Reference	
+a.b.bln	BoxedBoolean	
+a.b.num	BoxedNumber	
+a.b.str	BoxedString	
+a.c.nan	NaN	
+a.c.nul	Null	
+a.c.und	Undefined	
+a.p.bln	Boolean	
+a.p.num	Number	
+a.p.str	String	
+a.p.big	BigInt	
+a.p.sym	Symbol	
+a.r.ary	Array	...types
+a.r.obj	Object	
+a.r.dic	Dictionary	
+a.r.dec	Descriptor	
+a.r.cal	Caller	
+a.r.cls	Class	...types
+a.r.ins	Instance	...types
+
+a.p.bln.T	True	
+a.p.bln.F	False	
+a.p.num.inf	Infinite	
+a.p.num.unsafe	UnsafeNumber	
+a.p.num.dec	DecimalFloat	
+a.p.num.int	Integer	
+a.p.num.int.range	RangedInteger	min,max
+a.p.num.int.s	SignedInteger	
+a.p.num.int.u	UnsignedInteger	
+a.p.num.int.s.bit	SignedBitInteger	bit
+a.p.num.int.u.bit	UnsignedBitInteger	bit
+a.p.num.int.s8	Signed8BitInteger	
+a.p.num.int.u8	Unsigned8BitInteger	
+a.p.num.int.s16	Signed16BitInteger	
+a.p.num.int.u16	Unsigned16BitInteger	
+a.p.num.int.s32	Signed32BitInteger	
+a.p.num.int.u32	Unsigned32BitInteger	
+a.p.big.range	RangedBigInt	min,max
+a.p.big.s	SignedBigInt	
+a.p.big.u	UnsignedBigInt	
+a.p.big.s.bit	SignedBitBigInt	bit
+a.p.big.u.bit	UnsignedBitBigInt	bit
+a.p.big.s64	Signed64BitBigInt	
+a.p.big.u64	Unsigned64BitBigInt	
+a.p.big.s128	Signed128BitBigInt	
+a.p.big.u128	Unsigned128BitBigInt	
+a.p.big.s256	Signed256BitBigInt	
+a.p.big.u256	Unsigned256BitBigInt	
+
+a.r.dec.dat	Descriptor.Data	
+a.r.dec.acc	Descriptor.Accessor	
+a.r.dec.dat.v	Descriptor.Data.Value	
+a.r.dec.dat.fn	Descriptor.Data.Function	
+a.r.dec.acc.g	Descriptor.Accessor.Getter	
+a.r.dec.acc.s	Descriptor.Accessor.Setter	
+a.r.dec.acc.gs	Descriptor.Accessor.GetterSetter	
+
+a.r.cal.S	Caller.Sync	
+a.r.cal.G	Caller.Generator	
+a.r.cal.A	Caller.Async	
+a.r.cal.AG	Caller.AsyncGenerator	
+
+a.r.cal.fn	Caller.Function	
+a.r.cal.arrow	Caller.Arrow	
+a.r.cal.method	Caller.Method	
+a.r.cal.native	Caller.Native	
+a.r.cal.bound	Caller.Bound	
+
+a.r.cal.fn.s	Caller.Function.Sync	
+a.r.cal.fn.a	Caller.Function.Async	
+a.r.cal.fn.g	Caller.Function.Generator	
+a.r.cal.fn.ag	Caller.Function.AsyncGenerator	
+a.r.cal.arrow.s	Caller.Arrow.Sync	
+a.r.cal.arrow.a	Caller.Arrow.Async	
+a.r.cal.method.s	Caller.Method.Sync	
+a.r.cal.method.a	Caller.Method.Async	
+a.r.cal.method.g	Caller.Method.Generator	
+a.r.cal.method.ag	Caller.Method.AsyncGenerator	
