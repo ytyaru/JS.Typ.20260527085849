@@ -47,11 +47,6 @@ test.each([
     [C.sam].flatMap(v=>[v,'r.cal.method.A']),
     [C.sgm].flatMap(v=>[v,'r.cal.method.G']),
     [C.sagm].flatMap(v=>[v,'r.cal.method.AG']),
-    /*
-    [async()=>{}, async function(){}].flatMap(v=>[v,'AsyncFunction']),
-    [function*(){}].flatMap(v=>[v,'GeneratorFunction']),
-    [async function*(){}].flatMap(v=>[v,'AsyncGeneratorFunction']),
-    */
 ])('getId(%p)->%p', (v,E)=>expect(getId(v)).toBe(E));
 /*
 test.each([
