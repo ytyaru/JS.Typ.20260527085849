@@ -8,9 +8,20 @@ Object.defineProperty(des, 'gs', {get:()=>3,set:(v)=>3});
 Object.defineProperty(des, 'g', {get:()=>4});
 Object.defineProperty(des, 's', {set:(v)=>5});
 class C {static sm(){} static *sgm(){} static async sam(){} static async *sagm(){} m(){} async am(){} *gm(){} async *agm(){}}
+const terr = (T,E,M) => {
+    try {
+        T();
+        expect.unreachable('例外発生すべき所で発生しなかった。');
+    } catch (e) {
+        expect(e).toBeInstanceOf(E);
+        expect(e.message).toBe(M);
+    }
+}
 describe('typof()', ()=>{
     test('exist',()=>expect(typof).toBeInstanceOf(Function))
     test('(0,a=>a.p.num)',()=>expect(typof(0,a=>a.p.num)).toBe(true))
+    test.each([[0,1],[0,null],[0,undefined],[0,()=>1],[0,()=>({})],[0,()=>({$:{path:1}})]])('(%p,%p)->E',(v,a)=>terr(()=>typof(v,a), Error, `引数不正。第二引数以降はa=>a.pなどのコールバック関数であるべきです。`));
+    test.each([[0,()=>({$:{path:'存在しないパス'}})]])('(%p,%p)->E',(v,a)=>terr(()=>typof(v,a), Error, `存在しない型です。:存在しないパス`));
     test.each([
         [null,undefined,'',1].map(v=>[{constructor:v}, a=>a.B]).flat(),
         [new Boolean(), a=>a.b.bln],
