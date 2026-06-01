@@ -1,4 +1,4 @@
-import {a} from './a.js';
+import {a,getTag} from './a.js';
 import {typOf} from './typof.js';
 export class ConTyp {
 	static valid(C) {
@@ -7,6 +7,10 @@ export class ConTyp {
 		else if (a.r.cls(C)) return true;
 		else return false;
 	}
+    static id(C) {
+        if (!this.valid(C)) {throw new Error(`CはNaN,null,undefined,コンストラクタ関数のいずれかであるべきです。:${C}`)}
+        return a.c(C) ? getTag(C) : C.name;
+    }
 	static of(isThrow, v, ...types) {
 		if (!a.p.bln(isThrow)) {throw new Error(`isThrowは真偽値であるべきです。:${isThrow}`)}
 		if (!types.every(T=>this.valid(T))) {throw new Error(`...typesはNaN,null,undefined,コンストラクタ関数のいずれかであるべきです。:${types}`)}
@@ -28,8 +32,9 @@ export class ConTyp {
 		[BigInt, [a=>a.p.big]],
 		[Symbol, [a=>a.p.sym]],
 		[Array, [a=>a.r.ary]],
-		[Object, [a=>a.r.obj, a=>a.r.dic, a=>a.r.des, a=>a.r.ins(Object)]],
-		[Function, [a=>a.r.cal, a=>a.r.cls]],
+		[Object, [a=>a.r.obj, a=>a.r.dic, a=>a.r.des, a=>a.r.ins(Object), a=>a.B, a=>b]],
+		[Function, [a=>a.r.cal]],
+//		[Function, [a=>a.r.cal, a=>a.r.cls]],
 	]);
 }
 

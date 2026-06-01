@@ -1,5 +1,5 @@
 const a = {}
-const tag = v => Object.prototype.toString.call(v).slice(8,-1);
+const getTag = v => Object.prototype.toString.call(v).slice(8,-1);
 const isO = v => null !== v && Object(v) === v;
 const isFn = v => 'function'===typeof v;
 //const isCls = v => isFn(v) && !isFnA(v) && !isFnG(v) && !isFnAG(v) && !isBou(v) && /^[A-Z]+/.test(v?.name);
@@ -82,10 +82,10 @@ a.r.des.acc.gs = v => Descriptor.isAccGS(v);
 a.r.ins = v => a.r(v) && !a.r.cls(v) && !a.r.cal(v) && !a.r.ary(v) && !a.r.obj(v) && !a.r.dic(v) && !a.r.des(v);
 a.r.cls = v => isCls(v);
 a.r.cal = v => isFn(v) && !isCls(v);//r.cal<Async,Generator,AsyncGenerator/Function,Arrow,Method,Native,Bound>
-const isFnS = v => 'Function'===tag(v);
-const isFnA = v => 'AsyncFunction'===tag(v);
-const isFnG = v => 'GeneratorFunction'===tag(v);
-const isFnAG = v => 'AsyncGeneratorFunction'===tag(v);
+const isFnS = v => 'Function'===getTag(v);
+const isFnA = v => 'AsyncFunction'===getTag(v);
+const isFnG = v => 'GeneratorFunction'===getTag(v);
+const isFnAG = v => 'AsyncGeneratorFunction'===getTag(v);
 a.r.cal.s = v => a.r.cal(v) && isFnS(v);
 a.r.cal.a = v => a.r.cal(v) && isFnA(v);
 a.r.cal.g = v => a.r.cal(v) && isFnG(v);
@@ -120,4 +120,4 @@ a.r.cal.method.s = v => a.r.cal.method(v) && isFnS(v);
 a.r.cal.method.a = v => a.r.cal.method(v) && isFnA(v);
 a.r.cal.method.g = v => a.r.cal.method(v) && isFnG(v);
 a.r.cal.method.ag = v => a.r.cal.method(v) && isFnAG(v);
-export {a}
+export {a,getTag}

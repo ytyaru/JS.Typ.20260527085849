@@ -3,6 +3,13 @@ import {getFORL} from './forl.js';
 import {getId} from './get-id.js';
 export class ForlTyp {
     static valid(cb) {return a.r.cal.s(cb) && !a.r.cls(cb)}
+    static id(cb) {
+        if (!a.r.cal.s(cb)) {throw new Error(`引数不正。a=>a.pなどのコールバック関数であるべきです。`)}
+        const f = cb(getFORL());
+        const test = this.#getPropByPath(a, f.$.path);
+        if (!a.r.cal.s(test)) {throw new Error(`存在しない型です。:${f.$.path}`)}
+        return f.$.path;
+    }
     static of(v, ...cbs) {
         const res = this.#getForls(v, ...cbs);
         return this.#getNestRes(res);

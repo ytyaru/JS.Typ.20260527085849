@@ -7,6 +7,11 @@ export class ObjTyp {
 	static valid(C) {return a.r.obj(C) || a.r.des(C)}
 //	static of(isThrow, v, ...types) {
 //		if (!a.p.bln(isThrow)) {throw new Error(`isThrowは真偽値であるべきです。:${isThrow}`)}
+    static id(C) {
+        if (!a.r.obj(C)) {throw new Error(`引数不正。Objectであるべきです。`)}
+        // 再帰処理でキーの値が型を示しているか判定する
+        return C.toString();
+    }
 	static of(isThrow, v, C) {
 		if (!a.p.bln(isThrow)) {throw new Error(`isThrowは真偽値であるべきです。:${isThrow}`)}
         if (!this.valid(C)) {throw new Error(`型は[Number]や[a=>a.p]や[{name:String, age:a.p.num}]のような形式であるべきです。`)};
@@ -18,7 +23,7 @@ export class ObjTyp {
             const [T,c] = this.#getTyp(C[k]);
             if (!(k in v)) {throw new TypeError(`値は型指定されたキーを持っていません。:key:${k}, v:${v}`)}
             const R = T.of(v[k], c);
-            if (isThrow && !R) {throw new TypeError(`値のプロパティ${k}は期待された型と違います。期待:${}, 実際:${}`)}
+            if (isThrow && !R) {throw new TypeError(`値のプロパティ${k}は期待された型と違います。期待:${T.id(c)}, 実際:${getId(v[k])}`)}
             R.res.push(R);
         }
 	}
